@@ -23,6 +23,9 @@ services:
       - DB_DATABASE=telegraf-observer
       - DB_HOST=db
       - DB_PORT=5432
+      - PORT=8000
+      - APP_KEY=CHANGEME
+      - SESSION_DRIVER=cookie
     labels:      
       - "traefik.enable=true"
       - "traefik.http.routers.telegraf-api.rule=PathPrefix(`/api`)"
