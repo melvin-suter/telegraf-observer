@@ -35,7 +35,7 @@ export default class ConfigsController {
     }
 
     async post(ctx:HttpContext){
-        let config:Config = Config.create(ctx.request.body());
+        let config:Config = await Config.create(ctx.request.body());
         return config;
     }
 
