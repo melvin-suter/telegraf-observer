@@ -1,0 +1,32 @@
+
+<app-config-item-input
+    label="InfluxDB URLs"
+    subLabel="The URLs of the InfluxDB cluster nodes. (As a json-styled array)"
+    defaultValue="['https://influxdb-1.domain.local', 'https://influxdb-2.domain.local']"
+    [(configValue)]="config.configdata.output.urls"
+    [parentConfig]="config.parent"
+></app-config-item-input>
+
+<app-config-item-input
+    label="InfluxDB Token"
+    subLabel="Token for authentication."
+    defaultValue="YOUR TOKEN HERE"
+    [(configValue)]="config.configdata.output.token"
+    [parentConfig]="config.parent"
+></app-config-item-input>
+
+<app-config-item-input
+    label="InfluxDB Organization"
+    subLabel="The name of the organization you wish to write to; must exist."
+    defaultValue="influxdata"
+    [(configValue)]="config.configdata.output.organization"
+    [parentConfig]="config.parent"
+></app-config-item-input>
+
+<app-config-item-input
+    label="InfluxDB Bucket"
+    subLabel="Destination bucket to write into."
+    defaultValue="monitoring"
+    [(configValue)]="config.configdata.output.bucket"
+    [parentConfig]="config.parent"
+></app-config-item-input>

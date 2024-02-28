@@ -1,0 +1,19 @@
+<h1 class="mb-4">New</h1>
+
+<app-config-item-input
+    label="Name"
+    defaultValue=""
+    [(configValue)]="config.name"
+    [parentConfig]  ="undefined"
+></app-config-item-input>
+
+<app-config-item-input
+    label="Description"
+    defaultValue=""
+    [(configValue)]="config.description"
+    [parentConfig]  ="undefined"
+></app-config-item-input>
+
+<div class="w-100 text-end mt-4">
+    <button class="btn btn-primary" (click)="create()">Create</button>
+</div>

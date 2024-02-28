@@ -1,0 +1,14 @@
+
+
+.mh-3 {
+    min-height: 2rem;
+}
+.tab-page {
+    padding-top: 1rem;
+
+    display: none;
+
+    &.show {
+        display: block;
+    }
+}

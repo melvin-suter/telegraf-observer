@@ -1,0 +1,23 @@
+<div class="row mb-4">
+    <div class="col-6 d-flex justify-content-center flex-column">
+        <label for="{{ label }}Input" class="form-label">{{ label }}</label>
+        <small>{{ subLabel }}</small>
+    </div>
+    <div class="col d-flex">
+        <input 
+            type="text" 
+            class="form-control w-100"
+            id="{{ label }}Input"
+            [disabled]="configValue == undefined && parentConfig != undefined"
+            placeholder="{{defaultValue}}"
+            (keyup)="configValueChange.emit(configValue)"
+            (keydown)="configValueChange.emit(configValue)"
+            [(ngModel)]="configValue == undefined && parentConfig != undefined ? 'inherited' : configValue"
+        >
+
+        <button class="btn btn-primary" *ngIf="parentConfig" (click)="toggle()">
+            <i class="bi bi-lock-fill" *ngIf="configValue == undefined"></i>
+            <i class="bi bi-unlock-fill" *ngIf="configValue != undefined"></i>
+        </button>
+    </div>
+</div>

@@ -1,0 +1,18 @@
+<span (click)="showItem = !showItem">
+    <i class="bi bi-caret-right-fill" *ngIf="!showItem"></i>
+    <i class="bi bi-caret-down-fill" *ngIf="showItem"></i>
+</span>
+    <a [routerLink]="['/config/', item.id]" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">{{ item.name }}</a>   
+
+<div class="itemholder" *ngIf="showItem">
+    <div class="treeview-item" *ngFor="let subitem of items | async">
+        <app-treeview-item [item]="subitem"></app-treeview-item>
+    </div>
+
+    <div class="treeview-item new">
+        <span>
+            <i class="bi bi-plus"></i>
+        </span>
+        <a [routerLink]="['/config/new', item.id]" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">New...</a>   
+    </div>
+</div>

@@ -1,0 +1,23 @@
+<div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark h-100" style="width: 280px;">
+    <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+      <span class="fs-4">Telegraf-Observer</span>
+    </a>
+    <hr>
+    <div class="h-100 w-100">
+      <app-treeview></app-treeview>
+    </div>
+
+    <hr>
+    <div class="w-100" ngbDropdown>
+      <a class="d-flex align-items-center text-white text-decoration-none w-100" ngbDropdownToggle>
+        <strong>{{ username }}</strong>
+      </a>
+      <ul class="dropdown-menu-dark text-small shadow" ngbDropdownMenu>
+        <!--<li><a class="dropdown-item" href="#">New project...</a></li>
+        <li><a class="dropdown-item" href="#">Settings</a></li>
+        <li><a class="dropdown-item" href="#">Profile</a></li>
+        <li><hr class="dropdown-divider"></li>-->
+        <li><a ngbDropdownItem (click)="logout()">Logout</a></li>
+      </ul>
+    </div>
+  </div>

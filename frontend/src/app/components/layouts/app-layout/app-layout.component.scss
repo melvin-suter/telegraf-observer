@@ -1,0 +1,36 @@
+@import '../../../../variables.scss';
+.root-container{
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    overflow: hidden;
+
+    .divider{
+        background: linear-gradient( 150deg, $primary, $primary 40%, $secondary 50%, $secondary);
+        transform: translate(-2px, 0px); /* control the offsets */
+        margin-right: 0.5rem;
+        filter: blur(1px); /* control the blur */
+        width: 1rem;
+    }
+
+    .content {
+        padding: 1rem;
+        width: 100%;
+        overflow: auto;
+    }
+}
+
+
+:host {
+    height: 100%;
+    display: block;
+    overflow: hidden;
+}
+
+::ng-deep {
+    body,html,app-root {
+        height: 100%;
+        display: block;
+        overflow: hidden;
+    }
+}

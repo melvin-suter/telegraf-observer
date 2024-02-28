@@ -1,0 +1,27 @@
+@import '../../../variables.scss';
+
+.center-outer {
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    align-items: center;
+    background: linear-gradient( 150deg, $primary, $primary 40%, $secondary 50%, $secondary);  
+
+    .center-inner {
+        padding: 1rem;
+        background-color: #fff;
+        box-shadow: 3px 3px 5px $primary;
+    }
+}
+
+:host {
+    height: 100%;
+    display: block;
+}
+
+::ng-deep {
+    body,html,app-root {
+        height: 100%;
+        display: block;
+    }
+}

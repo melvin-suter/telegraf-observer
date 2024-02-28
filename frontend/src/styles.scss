@@ -1,0 +1,37 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* Importing Bootstrap SCSS file. */
+
+
+@import 'variables';
+@import 'bootstrap/scss/bootstrap';
+@import 'bootstrap-icons/font/bootstrap-icons';
+
+.treeview {
+
+    .treeview-item {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    a {
+        text-decoration: none;
+        color: #fff !important;
+        width: 100%;
+        padding: 0.5rem 1rem;
+        margin-left: 0.5rem;
+    }
+
+    .active {
+        background-color: $primary;
+    }
+}
+textarea.editor {
+    background-color: #333;
+    overflow: auto;
+    color: #fff;
+    font-family: monospace;
+    min-height: 200px;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+}

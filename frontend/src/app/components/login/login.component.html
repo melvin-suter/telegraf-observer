@@ -1,0 +1,18 @@
+<div class="center-outer">
+    <div class="center-inner border rounded">
+        <h1>Login</h1>
+        <div class="mb-3">
+            <label for="usernameInput" class="form-label">Username</label>
+            <input type="text" (change)="resetError()" class="form-control" id="usernameInput" placeholder="Username" [(ngModel)]="username">
+        </div>
+        <div class="mb-3">
+            <label for="passwordInput" class="form-label">Password</label>
+            <input type="password" (change)="resetError()" class="form-control" id="passwordInput" placeholder="Password" [(ngModel)]="password">
+            <div class="invalid-feedback d-block" *ngIf="showError">
+                Invalid Credentials
+            </div>
+        </div>
+
+        <input type="submit" (click)="login()" class="btn btn-primary w-100" value="Login"/>
+    </div>
+</div>

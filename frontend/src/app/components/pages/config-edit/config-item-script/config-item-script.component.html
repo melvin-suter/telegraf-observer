@@ -1,0 +1,48 @@
+
+
+<div class="modal d-block" *ngIf="showNewScript" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-body">
+            <div class="mb-3">
+                <label class="form-label">New Script</label>
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="example.ps1" (keyup.enter)="addScript()" [(ngModel)]="newScript">
+                </div>
+                  
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" (click)="showNewScript = false; newScript = ''">Close</button>
+          <button type="button" class="btn btn-primary" (click)="addScript()">Add Script</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+<app-config-item-input
+label="Script Directory (Windows)"
+subLabel="The absolute path to the directory to store telegraf scripts."
+defaultValue="C:\_scripts\telegraf"
+[(configValue)]="config.configdata.scriptDirWin"
+[parentConfig]="config.parent"
+></app-config-item-input>
+
+<app-config-item-input
+label="Script Directory (Linux)"
+subLabel="The absolute path to the directory to store telegraf scripts."
+defaultValue="/opt/telegraf-scripts"
+[(configValue)]="config.configdata.scriptDirLnx"
+[parentConfig]="config.parent"
+></app-config-item-input>
+
+
+<div class="mh-3 w-100">
+    <button class="btn btn-secondary mb-2 float-end" (click)="showNewScript = true">Add script</button>
+
+    <div *ngFor="let script of Object.keys(config.configdata.scripts)">
+        <h3>{{ script }} <button class="btn btn-danger" (click)="removeScript(script)">Delete</button></h3>    
+        <textarea class="form-control editor mb-3" [(ngModel)]="config.configdata.scripts[script]"></textarea>
+    </div>
+</div>

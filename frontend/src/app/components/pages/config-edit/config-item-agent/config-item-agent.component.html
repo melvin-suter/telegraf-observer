@@ -1,0 +1,79 @@
+
+<app-config-item-input
+    label="Interval"
+    subLabel="Default data collection interval for all inputs"
+    defaultValue="30"
+    [(configValue)]="config.configdata.agent.interval"
+    [parentConfig]="config.parent"
+></app-config-item-input>
+
+<app-config-item-input
+    label="Round Interval"
+    subLabel="Rounds collection interval to 'interval'"
+    defaultValue="true"
+    [(configValue)]="config.configdata.agent.round_interval"
+    [parentConfig]="config.parent"
+></app-config-item-input>
+
+<app-config-item-input
+    label="Metric Batch Size"
+    subLabel="Telegraf will send metrics to outputs in batches of at most metric_batch_size metrics."
+    defaultValue="1000"
+    [(configValue)]="config.configdata.agent.metric_batch_size"
+    [parentConfig]="config.parent"
+></app-config-item-input>
+
+<app-config-item-input
+    label="Metric Buffer Limit"
+    defaultValue="10000"
+    subLabel="Maximum number of unwritten metrics per output."
+    [(configValue)]="config.configdata.agent.metric_buffer_limit"
+    [parentConfig]="config.parent"
+></app-config-item-input>
+
+<app-config-item-input
+    label="Collection Jitter"
+    defaultValue="0s"
+    subLabel="Collection jitter is used to jitter the collection by a random amount."
+    [(configValue)]="config.configdata.agent.collection_jitter"
+    [parentConfig]="config.parent"
+></app-config-item-input>
+
+<app-config-item-input
+    label="Flush Interval"
+    subLabel="Default flushing interval for all outputs. Maximum flush_interval will be flush_interval + flush_jitter"
+    defaultValue="10s"
+    [(configValue)]="config.configdata.agent.flush_interval"
+    [parentConfig]="config.parent"
+></app-config-item-input>
+
+<app-config-item-input
+    label="Flush Jitter"
+    subLabel="Jitter the flush interval by a random amount."
+    defaultValue="0s"
+    [(configValue)]="config.configdata.agent.flush_jitter"
+    [parentConfig]="config.parent"
+></app-config-item-input>
+
+<app-config-item-input
+    label="Quiet"
+    subLabel="Log only error level messages."
+    defaultValue="true"
+    [(configValue)]="config.configdata.agent.quiet"
+    [parentConfig]="config.parent"
+></app-config-item-input>
+
+<app-config-item-input
+    label="Hostname"
+    defaultValue=""
+    subLabel="Override default hostname, if empty use os.Hostname()"
+    [(configValue)]="config.configdata.agent.hostname"
+    [parentConfig]="config.parent"
+></app-config-item-input>
+
+<app-config-item-input
+    label="Omit Hostname"
+    subLabel="If set to true, do no set the 'host' tag in the telegraf agent."
+    defaultValue="false" [(configValue)]="config.configdata.agent.omit_hostname"
+    [parentConfig]="config.parent"
+></app-config-item-input>

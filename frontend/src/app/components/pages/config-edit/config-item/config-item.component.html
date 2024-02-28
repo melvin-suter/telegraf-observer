@@ -1,0 +1,64 @@
+<h1 class="mb-4">{{ configName }}
+</h1>
+
+<app-config-item-input
+    label="Name"
+    defaultValue="{{ configName }}"
+    [(configValue)]="config.name"
+    [parentConfig]  ="undefined"
+></app-config-item-input>
+
+<app-config-item-input
+    label="Description"
+    defaultValue="{{ configDesc }}"
+    [(configValue)]="config.description"
+    [parentConfig]  ="undefined"
+></app-config-item-input>
+
+<app-config-item-input
+    label="Telegraf Agent Version"
+    defaultValue="1.29.5"
+    [(configValue)]="config.configdata.agentVersion"
+    [parentConfig]  ="config.parent"
+></app-config-item-input>
+
+<div class="tab-view">
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+            <a class="nav-link" [class.active]="selectedTab == 0" (click)="selectedTab = 0">Agent</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" [class.active]="selectedTab == 1" (click)="selectedTab = 1">Output</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" [class.active]="selectedTab == 2" (click)="selectedTab = 2">Inputs</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" [class.active]="selectedTab == 3" (click)="selectedTab = 3">Scripts</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" [class.active]="selectedTab == 4" (click)="selectedTab = 4">Deploy</a>
+        </li>
+    </ul>
+
+    <div class="tab-page" [class.show]="selectedTab == 0">
+        <app-config-item-agent [(config)]="config"></app-config-item-agent>
+    </div>
+
+    <div class="tab-page" [class.show]="selectedTab == 1">
+        <app-config-item-output [(config)]="config"></app-config-item-output>
+    </div>
+    <div class="tab-page" [class.show]="selectedTab == 2">
+        <app-config-item-inputs [(config)]="config"></app-config-item-inputs>
+    </div>
+    <div class="tab-page" [class.show]="selectedTab == 3">
+        <app-config-item-script [(config)]="config"></app-config-item-script>
+    </div>
+    <div class="tab-page" [class.show]="selectedTab == 4">
+        <app-config-item-deploy [(config)]="config"></app-config-item-deploy>
+    </div>
+</div>
+
+<div class="w-100 d-flex justify-content-end">
+    <button class="btn btn-primary" (click)="save()">Save</button>
+</div>

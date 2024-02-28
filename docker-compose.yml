@@ -1,0 +1,51 @@
+version: '3.8'
+
+services:
+  telegraf-db:
+    image: postgres:16
+    restart: always
+    volumes:
+      - telegraf-data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=telegraf-observer
+      - POSTGRES_USER=telegraf-observer
+      - POSTGRES_DB=telegraf-observer
+     
+    
+  telegraf-api:
+    restart: always
+    image: telegraf-observer-api:latest
+    link:
+      - db:telegraf-db
+    environment:
+      - DB_PASSWORD=telegraf-observer
+      - DB_USER=telegraf-observer
+      - DB_DATABASE=telegraf-observer
+      - DB_HOST=db
+      - DB_PORT=5432
+    labels:      
+      - "traefik.enable=true"
+      - "traefik.http.routers.telegraf-api.rule=PathPrefix(`/api`)"
+      - "traefik.http.routers.telegraf-api.entrypoints=web"
+
+  telegraf-web:
+    restart: always
+    image: telegraf-observer-web:latest
+    volumes:
+      - telegraf-web:/app
+    labels:      
+      - "traefik.enable=true"
+      - "traefik.http.routers.telegraf-web.rule=PathPrefix(`/`)"
+      - "traefik.http.routers.telegraf-web.entrypoints=web"
+
+  telegraf-ingress:
+    image: "traefik:v2.11"
+    command:
+      - "--api.insecure=true"
+      - "--providers.docker=true"
+      - "--providers.docker.exposedbydefault=false"
+      - "--entrypoints.web.address=:8080"
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
+volumes:
+  telegraf-data

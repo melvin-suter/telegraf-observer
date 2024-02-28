@@ -1,0 +1,13 @@
+<div class="treeview">
+    <div class="treeview-item" *ngFor="let item of items | async">
+        <app-treeview-item [item]="item"></app-treeview-item>
+    </div>
+
+
+    <div class="treeview-item new">
+        <span>
+            <i class="bi bi-plus"></i>
+        </span>
+        <a [routerLink]="['/config/new']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">New...</a>   
+    </div>
+</div>

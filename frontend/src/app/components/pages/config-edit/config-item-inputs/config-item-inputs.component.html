@@ -1,0 +1,31 @@
+
+
+<div class="modal d-block" *ngIf="showNewInput" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-body">
+            <div class="mb-3">
+                <label for="NewInputInput" class="form-label">New Input</label>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon2">inputs.</span>
+                    <input type="text" class="form-control" placeholder="cpu" (keyup.enter)="addInput()" [(ngModel)]="newInput">
+                </div>
+                  
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" (click)="showNewInput = false; newInput = ''">Close</button>
+          <button type="button" class="btn btn-primary" (click)="addInput()">Add Input</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div class="mh-3 w-100">
+    <button class="btn btn-secondary mb-2 float-end" (click)="showNewInput = true">Add input</button>
+
+    <div *ngFor="let input of Object.keys(config.configdata.inputs)">
+        <h3>inputs.{{ input }} <button class="btn btn-danger" (click)="removeInput(input)">Delete</button></h3>    
+        <textarea class="form-control editor mb-3" [(ngModel)]="config.configdata.inputs[input]"></textarea>
+    </div>
+</div>
