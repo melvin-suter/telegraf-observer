@@ -1,5 +1,5 @@
 #!/usr/bin/dumb-init /bin/sh
 
-node ace migrate
+node ace migration:run
 node ace db:seed
-node server.js
+node bin/server.js
