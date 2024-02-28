@@ -21,5 +21,6 @@ COPY --chown=node:node ./package*.json ./
 RUN npm ci --omit="dev"  
 COPY --chown=node:node --from=build /app/build .
 COPY --chown=node:node entrypoint.sh /app/entrypoint.sh
+RUN chmod 775 /app/entrypoint.sh
 EXPOSE 8000
 CMD [ "dumb-init", "/app/entrypoint.sh" ]
