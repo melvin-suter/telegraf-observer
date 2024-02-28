@@ -1,4 +1,4 @@
-FROM node:16.13.1-alpine AS base
+FROM node:20-alpine AS base
 RUN apk --no-cache add dumb-init
 RUN mkdir -p /app && chown node:node /app
 WORKDIR /app
